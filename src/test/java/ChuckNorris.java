@@ -63,8 +63,10 @@ public class ChuckNorris {
 
         if (totalCharlie > totalBarack)
             System.out.println("More Jokes About Charlie Sheen");
-        else
+        else if (totalBarack > totalCharlie)
             System.out.println("More Jokes About Barack Obama");
+        else
+            System.out.println("They both have the same amount of jokes.");
 
         assertEquals(response.getStatusCode(), 200);
     }
