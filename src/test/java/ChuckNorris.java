@@ -153,7 +153,7 @@ public class ChuckNorris {
         httpRequest = RestAssured.given();
         httpRequest.header("Content-Type", "application/json");
     }
-    
+
     public String convertToCSV(String[] data) {
         return Stream.of(data)
                 .map(this::escapeSpecialCharacters)
