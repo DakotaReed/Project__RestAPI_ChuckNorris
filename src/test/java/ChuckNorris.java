@@ -92,7 +92,7 @@ public class ChuckNorris {
         getURL(url);
         response = httpRequest.get(url+"/jokes/random?category=movie");
         jp = response.jsonPath();
-        rowUrlValue = new String[]{jp.get("url").toString(), jp.get("value").toString()};
+        rowUrlValue = new String[]{jp.get("url").toString(), jp.get("value").toString().contains(",") ? jp.get("value").toString().replace(",", "") : jp.get("value").toString()};
         System.out.println(jp.get("url").toString()+" .... "+jp.get("value").toString());
         listArrUrlValueJokesCSV.add(rowUrlValue);
         System.out.println(listArrUrlValueJokesCSV.size());
@@ -119,6 +119,8 @@ public class ChuckNorris {
         for (char letter : arrLettersAct) {
             if (String.valueOf(letter).equals("\""))
                 jokeWeb = jokeWeb.replace("\"", "");
+            if (String.valueOf(letter).equals(","))
+                jokeWeb = jokeWeb.replace(",", "");
         }
         driver.quit();
         System.out.println("Joke Displayed on Web is:    "+jokeWeb);
