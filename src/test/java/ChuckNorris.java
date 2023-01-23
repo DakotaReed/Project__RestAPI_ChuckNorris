@@ -77,7 +77,7 @@ public class ChuckNorris {
             getURL(url);
             response = httpRequest.get(url+"/jokes/random");
             jp = response.jsonPath();
-            rowUrlValue = new String[]{jp.get("url").toString(), jp.get("value").toString()};
+            rowUrlValue = new String[]{jp.get("url").toString(), jp.get("value").toString().contains(",") ? jp.get("value").toString().replace(",", "") : jp.get("value").toString()};
             System.out.println(jp.get("url").toString()+" .... "+jp.get("value").toString());
             listArrUrlValueJokesCSV.add(rowUrlValue);
             System.out.println(listArrUrlValueJokesCSV.size());
